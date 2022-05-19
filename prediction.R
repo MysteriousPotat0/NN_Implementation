@@ -7,10 +7,9 @@ pred <- function(Theta, x){
   
   # Forward Propagation
   theta1 <- matrix(Theta[1:theta1_size], nrow(theta1), ncol(theta1))
-  theta2 <- matrix(Theta[theta1_size + 1:theta2_size], nrow(theta2), ncol(theta2))
-  theta3 <- matrix(tail(Theta, theta3_size), nrow(theta3), ncol(theta3))
+  theta3 <- matrix(tail(Theta, theta2_size), nrow(theta2), ncol(theta2))
   
-  m <- dim(x)[1]
+  m <- nrow(x)
   
   # Forward Feed
   # x <- x*matrix(rbinom(dim(x)[2], 1, 0.8), dim(x)[1], dim(x)[2], byrow = T)
@@ -27,14 +26,6 @@ pred <- function(Theta, x){
   
   z3 <- theta2 %*% t(a2)
   
-  a3 <- sig(z3)
-  
-  # a3 <- a3 * matrix(rbinom(dim(a3)[2], 1, 0.3), dim(a3)[1], dim(a3)[2], byrow = T)
-  
-  a3 <- cbind(c(rep(1, m)), t(a3))
-  
-  z4 <- theta3 %*% t(a3)
-  
-  h <- sig(z4)
+  h <- sig(z3)
   
 }

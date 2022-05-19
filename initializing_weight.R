@@ -1,7 +1,7 @@
 # Initialized the weight each theta through random uniform distribution
 initial_weights = function(in_layer, out_layer){
   
-  eps = 0.1
+  eps = sqrt(6)/(sqrt(in_layer + out_layer))
 
   rand_num <- runif(out_layer*(in_layer+1))
   
