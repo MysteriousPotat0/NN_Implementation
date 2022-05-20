@@ -1,22 +1,17 @@
 # Cost function for the neural network, this function is only used for minimizing the Theta parameter
 cost <- function(Theta){
   
-  # Rolling weights into their respective sizes
+  # Setup the weights
   theta1 <- matrix(Theta[1:theta1_size], nrow(theta1), ncol(theta1))
   theta2 <- matrix(tail(Theta, theta2_size), nrow(theta2), ncol(theta2))
-  
   m <- nrow(x)
   
+  # Forward Propagation
   x <- ones(m, x) # Add a column of 1's to x
-  
   z2 <- mat_mult(theta1, t(x))
-  
   a2 <- sig(z2)
-  
   a2 <- ones(m, t(a2))
-  
   z3 <- mat_mult(theta2, t(a2))
-  
   h <- sig(z3)
 
   # Implementing the cost function with regularization
@@ -29,22 +24,17 @@ cost <- function(Theta){
 # Function that is used for calculating the error the fitted value
 error_cost <- function(Theta, x, y){
   
-  # Rolling weights into their respective sizes
+  # Setup the weights
   theta1 <- matrix(Theta[1:theta1_size], nrow(theta1), ncol(theta1))
   theta2 <- matrix(tail(Theta, theta2_size), nrow(theta2), ncol(theta2))
-  
   m <- nrow(x)
   
+  # Forward Propagation
   x <- ones(m, x) # Add a column of 1's to x
-  
   z2 <- mat_mult(theta1, t(x))
-  
   a2 <- sig(z2)
-  
   a2 <- ones(m, t(a2))
-  
   z3 <- mat_mult(theta2, t(a2))
-  
   h <- sig(z3)
   
   # Implementing the cost function with regularization
