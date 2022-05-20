@@ -1,5 +1,4 @@
 library(data.table)
-
 # Load Theta parameters from a csv file
 
 load_theta <- function(x){
@@ -15,6 +14,5 @@ load_theta <- function(x){
 save_theta <- function(x){
   
   write.csv(x, 'Theta.csv', row.names = F)
-  
   
 }
